@@ -39,15 +39,25 @@ router.get("/:id", async (req,res) => {
     }
 })
 
-router.put("/:id", async (req,res) => {
-   try{
-     const updateBooking = await Booking.findBYIdAndUpdate(req.params.id, req.body,{new:true})
-    res.json(updateBooking)
-    
-   }catch(err){
-    res.status(400).json("Error:", err.message)
-   }
-})
+router.put('/:id', async (req, res) => {
+  try {
+    const updateBooking = await Booking.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+
+    if (!updateBooking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+
+    res.json(updateBooking);
+
+  } catch (error) {
+    res.status(400).json({ message: "Error, Fail to update", error });
+  }
+});
+
 
 router.delete("/:id", async (req, res) => {
     try{

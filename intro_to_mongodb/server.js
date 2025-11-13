@@ -5,6 +5,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const BookingRoutes = require("./routes/bookings.js")
+const  authRoutes = require("./routes/auth.js")
 
 const app = express()
 port = 4945
@@ -18,6 +19,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/?directConnection=true&serverSelecti
 .catch(err=>console.log("error connecting to monngo:", err))
 
 app.use("/bookings", BookingRoutes)
+app.use("/auth", authRoutes)
+require("dotenv").config()
 
 
 app.listen(port, ()=>{
