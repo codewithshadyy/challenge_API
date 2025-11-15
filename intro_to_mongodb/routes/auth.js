@@ -4,6 +4,7 @@ const router = express.Router()
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const User = require("../models/User")
+const auth = require("../middleware/auth.js");
 
 // signing up
 router.post("/signup", async (req, res) => {
@@ -65,5 +66,20 @@ router.post("/login", async (req, res) => {
         res.status(500).json({ message: "Server error", error: err.message })
     }
 })
+
+
+
+
+// Get all users
+router.get("/all-users", auth, async (req, res) => {
+    try {
+        const users = await User.find().select("-password");
+        res.json(users);
+
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error });
+    }
+});
+
 
 module.exports = router
