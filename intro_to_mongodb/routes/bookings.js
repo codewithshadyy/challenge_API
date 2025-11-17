@@ -1,9 +1,11 @@
 const express = require("express")
 const Booking = require("../models/booking.js")
 const booking = require("../models/booking.js")
+const ejs = require("ejs")
+const app = express()
 
 const router = express.Router()
-
+app.set('view engine', 'ejs')
 
 router.post("/", async(req, res) => {
     try{
@@ -27,6 +29,8 @@ router.get("/", async (req, res) => {
     }
     
 })
+
+
 
 
 
