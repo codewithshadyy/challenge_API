@@ -29,7 +29,7 @@ router.post("/signup", async (req, res) => {
 
         await newUser.save()
 
-        res.status(201).json({ message: "New user successfully created" })
+        res.status(201).json({ message: `${newUser.name}!! you have signed up successfully ` })
 
     } catch (err) {
         res.status(500).json({ message: "Server error", error: err.message })
@@ -60,7 +60,7 @@ router.post("/login", async (req, res) => {
             { expiresIn: "1h" }
         )
 
-        res.json({ message: "Logged in successfully", token })
+        res.json({ message: `${user.email} Logged in successfully`, token })
 
     } catch (err) {
         res.status(500).json({ message: "Server error", error: err.message })
