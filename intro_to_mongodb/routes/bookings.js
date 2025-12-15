@@ -39,7 +39,7 @@ router.get("/:id", async (req,res) => {
         const booking = await Booking.findById(req.params.id)
            res.json(booking)
     }catch(err){
-        res.status(404).json("Error:", err.message)
+        res.status(404).json("booking not found:", err.message)
     }
 })
 
