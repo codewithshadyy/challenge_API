@@ -25,7 +25,7 @@ router.get("/", async (req, res) => {
         const bookings = await Booking.find()
         res.json(bookings)
     }catch(err){
-        res.status(404).json('Error:', err.message)
+        res.status(404).json('Bookings not found:', err.message)
     }
     
 })
