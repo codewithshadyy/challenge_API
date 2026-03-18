@@ -34,9 +34,10 @@ Only the creator of a book can update or delete it.
 ---
 
 ## 📁 Project Structure
+```
 project/
-│── models/
-│ ├── User.js
+-│── models/
+-│ ├── User.js
 │ └── Book.js
 │
 │── routes/
@@ -53,6 +54,7 @@ project/
 │── server.js
 │── .env
 │── README.md
+```
 
 
 
