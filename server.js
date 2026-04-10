@@ -18,7 +18,7 @@ dotenv.config()
 
 
 app.use(express.json())
-mongoose.connect(process.env.MONGO_URI || "mongodb+srv://shadrack26th_db_user:05aRpT8iZZNIWPJK@cluster0.o6zuaen.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect(  "mongodb+srv://shadrack26th_db_user:05aRpT8iZZNIWPJK@cluster0.o6zuaen.mongodb.net/", {
     serverSelectionTimeoutMS:5000
 })
 .then(() => console.log("mongodb connected successfukky"))
